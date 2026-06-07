@@ -30,27 +30,6 @@ function Index() {
 
   return (
     <Layout>
-      {/* Hero */}
-      <section className="relative mb-6 overflow-hidden rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-card)]">
-        <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary/20 blur-3xl" />
-        <div className="relative">
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-primary">
-            <Zap className="h-3 w-3" /> v2.0
-          </div>
-          <h1 className="mt-3 font-display text-2xl font-bold leading-tight">
-            Concorra às melhores <span className="text-gradient-primary">skins do CS2</span>
-          </h1>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Rifas justas, sorteios ao vivo e entrega imediata na sua Steam.
-          </p>
-          <Link
-            to="/rifas"
-            className="mt-4 inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-bold uppercase tracking-wider text-primary-foreground transition-transform hover:scale-105"
-          >
-            Ver Rifas <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </section>
 
       {/* Stats */}
       <section className="mb-6 grid grid-cols-3 gap-2">
@@ -110,7 +89,7 @@ function Index() {
           <MessageCircle className="h-5 w-5" />
         </div>
         <div className="flex-1">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-success">02 · Comunidade</div>
+          <div className="text-[10px] font-bold uppercase tracking-widest text-success">Comunidade</div>
           <div className="font-display text-sm font-bold">Entre no grupo do WhatsApp</div>
           <div className="text-[11px] text-muted-foreground">Avisos de sorteios em primeira mão · Grátis</div>
         </div>
