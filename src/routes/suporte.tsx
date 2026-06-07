@@ -15,13 +15,13 @@ export const Route = createFileRoute("/suporte")({
 const channels = [
   { icon: MessageCircle, title: "WhatsApp", desc: "Resposta em até 1h", href: "https://chat.whatsapp.com/Ez7Mnzjh3GsHqJpU07nnDI" },
   { icon: Instagram, title: "Instagram", desc: "@csbrskins", href: "#" },
-  { icon: Mail, title: "E-mail", desc: "suporte@csbrskins.com.br", href: "mailto:suporte@csbrskins.com.br" },
+  { icon: Mail, title: "E-mail", desc: "csbrskins@gmail.com", href: "mailto:csbrskins@gmail.com" },
 ];
 
 const faqs = [
   { q: "Como funciona a rifa?", a: "Você compra uma ou mais cotas. Quando todas as cotas forem vendidas, é feito um sorteio ao vivo e o ganhador recebe a skin direto na conta Steam." },
-  { q: "É seguro?", a: "Sim. Todos os sorteios são públicos, transmitidos ao vivo e auditáveis. Já entregamos centenas de skins." },
-  { q: "Como recebo minha skin?", a: "A entrega é feita via troca Steam, em até 24h após o sorteio." },
+  { q: "É seguro?", a: "Sim. Todos os sorteios são públicos e transmitidos ao vivo. Já entregamos centenas de skins." },
+  { q: "Como recebo minha skin?", a: "A entrega é feita via troca Steam logo após o sorteio." },
 ];
 
 function Suporte() {

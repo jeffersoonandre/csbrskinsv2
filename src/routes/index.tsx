@@ -20,7 +20,6 @@ export const Route = createFileRoute("/")({
 const filters: { value: "todas" | RaffleStatus; label: string }[] = [
   { value: "todas", label: "Todas" },
   { value: "ativa", label: "Ativas" },
-  { value: "em-breve", label: "Em Breve" },
   { value: "encerrada", label: "Encerradas" },
 ];
 
