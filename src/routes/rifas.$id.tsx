@@ -83,7 +83,7 @@ function RafflePage() {
   );
 }
 
-function RaffleActive({ raffle, qty, setQty, descOpen, setDescOpen, pct, total }: any) {
+function RaffleActive({ raffle, qty, setQty, descOpen, setDescOpen, pct, total }: { raffle: any; qty: number; setQty: React.Dispatch<React.SetStateAction<number>>; descOpen: boolean; setDescOpen: React.Dispatch<React.SetStateAction<boolean>>; pct: number; total: string }) {
   return (
     <>
       {/* Progress */}
