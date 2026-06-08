@@ -41,7 +41,7 @@ export const raffles: Raffle[] = [
     soldNumbers: 100,
     status: "encerrada",
     description: "Rifa encerrada.",
-    winner: "Jair Bolsonaro",
+    winner: "Francieli Bueno",
   },
   {
     id: "e002",
@@ -53,7 +53,7 @@ export const raffles: Raffle[] = [
     soldNumbers: 100,
     status: "encerrada",
     description: "Rifa encerrada.",
-    winner: "Luiz Inácio",
+    winner: "Gabrielle Baldo",
   },
   {
     id: "e001",
