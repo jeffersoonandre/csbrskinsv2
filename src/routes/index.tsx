@@ -1,10 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
 import { RaffleCard } from "@/components/RaffleCard";
 import { RaffleListItem } from "@/components/RaffleListItem";
 import { WhatsAppPopup } from "@/components/WhatsAppPopup";
 import { raffles } from "@/lib/raffles";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -44,13 +44,28 @@ function Index() {
             ))}
           </div>
 
-          <Link
-            to="/comunidade"
-            className="mt-4 flex items-center justify-center gap-2 rounded-xl border border-primary/40 bg-primary/10 px-4 py-3 font-display text-sm font-bold uppercase tracking-widest text-primary transition-all hover:bg-primary hover:text-primary-foreground"
+          <a
+            href="https://chat.whatsapp.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 flex items-center gap-3 rounded-2xl border border-border bg-card p-3 transition-all hover:border-[#25D366]/50"
           >
-            <MessageCircle className="h-4 w-4" />
-            Entrar na Comunidade
-          </Link>
+            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#25D366]/15 text-[#25D366]">
+              <MessageCircle className="h-5 w-5" />
+            </div>
+            <div className="min-w-0 flex-1">
+              <div className="text-[10px] font-bold uppercase tracking-widest text-[#25D366]">
+                Comunidade
+              </div>
+              <div className="font-display text-sm font-bold leading-tight">
+                Entre no grupo do WhatsApp
+              </div>
+              <div className="text-[11px] text-muted-foreground">
+                Avisos de sorteios em primeira mão · Grátis
+              </div>
+            </div>
+            <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground" />
+          </a>
         </section>
       )}
 
