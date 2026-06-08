@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { MessageCircle, X } from "lucide-react";
+import { X } from "lucide-react";
+import whatsappIcon from "@/assets/whatsapp.svg.asset.json";
 
 export function WhatsAppPopup() {
   const [open, setOpen] = useState(false);
