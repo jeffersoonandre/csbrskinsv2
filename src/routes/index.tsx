@@ -26,7 +26,7 @@ function Index() {
   return (
     <Layout>
       <section className="mb-6">
-        <h2 className="mb-3 font-display text-lg font-bold uppercase tracking-wide">Rifa Ativa</h2>
+        <h2 className="mb-3 font-display text-lg font-bold uppercase tracking-wide">{ativas.length} Rifa{ativas.length !== 1 ? "s" : ""} Ativa{ativas.length !== 1 ? "s" : ""}</h2>
         <div className="grid grid-cols-1 gap-4">
           {ativas.map((r) => (
             <RaffleCard key={r.id} raffle={r} />
