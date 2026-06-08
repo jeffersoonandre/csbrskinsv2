@@ -1,9 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
 import { RaffleCard } from "@/components/RaffleCard";
 import { RaffleListItem } from "@/components/RaffleListItem";
 import { WhatsAppPopup } from "@/components/WhatsAppPopup";
 import { raffles } from "@/lib/raffles";
+import { MessageCircle } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -42,6 +43,14 @@ function Index() {
               <RaffleListItem key={r.id} raffle={r} />
             ))}
           </div>
+
+          <Link
+            to="/comunidade"
+            className="mt-4 flex items-center justify-center gap-2 rounded-xl border border-primary/40 bg-primary/10 px-4 py-3 font-display text-sm font-bold uppercase tracking-widest text-primary transition-all hover:bg-primary hover:text-primary-foreground"
+          >
+            <MessageCircle className="h-4 w-4" />
+            Entrar na Comunidade
+          </Link>
         </section>
       )}
 
