@@ -1,4 +1,7 @@
-import skinAsset from "@/assets/skin-001.png.asset.json";
+import caparifaAsset from "@/assets/caparifa.png.asset.json";
+import uspAsset from "@/assets/usp.png.asset.json";
+import fireAsset from "@/assets/fire.png.asset.json";
+import karambitAsset from "@/assets/karambit.png.asset.json";
 
 export type RaffleStatus = "ativa" | "em-breve" | "encerrada";
 
@@ -18,9 +21,9 @@ export interface Raffle {
 export const raffles: Raffle[] = [
   {
     id: "001",
-    number: "#001",
+    number: "#004",
     title: "StatTrak™ M4A1-S | Black Lotus",
-    image: skinAsset.url,
+    image: caparifaAsset.url,
     price: 3,
     totalNumbers: 100,
     soldNumbers: 57,
@@ -31,8 +34,8 @@ export const raffles: Raffle[] = [
   {
     id: "e003",
     number: "#E003",
-    title: "AWP | Dragon Lore",
-    image: skinAsset.url,
+    title: "USP-S | Printstream",
+    image: uspAsset.url,
     price: 10,
     totalNumbers: 200,
     soldNumbers: 200,
@@ -44,7 +47,7 @@ export const raffles: Raffle[] = [
     id: "e002",
     number: "#E002",
     title: "AK-47 | Fire Serpent",
-    image: skinAsset.url,
+    image: fireAsset.url,
     price: 5,
     totalNumbers: 150,
     soldNumbers: 150,
@@ -56,7 +59,7 @@ export const raffles: Raffle[] = [
     id: "e001",
     number: "#E001",
     title: "Karambit | Doppler",
-    image: skinAsset.url,
+    image: karambitAsset.url,
     price: 7,
     totalNumbers: 120,
     soldNumbers: 120,
