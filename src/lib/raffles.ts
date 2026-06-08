@@ -16,6 +16,7 @@ export interface Raffle {
   status: RaffleStatus;
   description: string;
   winner?: string;
+  winningNumber?: number;
 }
 
 export const raffles: Raffle[] = [
@@ -41,7 +42,8 @@ export const raffles: Raffle[] = [
     soldNumbers: 100,
     status: "encerrada",
     description: "Rifa encerrada.",
-    winner: "Jair Bolsonaro",
+    winner: "Francieli Bueno",
+    winningNumber: 42,
   },
   {
     id: "e002",
@@ -53,7 +55,8 @@ export const raffles: Raffle[] = [
     soldNumbers: 100,
     status: "encerrada",
     description: "Rifa encerrada.",
-    winner: "Luiz Inácio",
+    winner: "Gabrielle Baldo",
+    winningNumber: 17,
   },
   {
     id: "e001",
@@ -66,6 +69,7 @@ export const raffles: Raffle[] = [
     status: "encerrada",
     description: "Rifa encerrada.",
     winner: "Jefferson André",
+    winningNumber: 88,
   },
 ];
 
