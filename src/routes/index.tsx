@@ -48,9 +48,9 @@ function Index() {
             href="https://chat.whatsapp.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 flex items-center gap-3 rounded-2xl border border-border bg-card p-3 transition-all hover:border-[#25D366]/50"
+            className="mt-4 flex items-center gap-3 rounded-2xl border border-[#25D366]/40 bg-[#25D366]/15 p-3 transition-all hover:bg-[#25D366]/25 hover:border-[#25D366]/60"
           >
-            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#25D366]/15 text-[#25D366]">
+            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#25D366]/30 text-[#25D366]">
               <MessageCircle className="h-5 w-5" />
             </div>
             <div className="min-w-0 flex-1">
