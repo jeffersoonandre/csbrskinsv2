@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useState } from "react";
 import { Layout } from "@/components/Layout";
 import { getRaffleById } from "@/lib/raffles";
-import { Minus, Plus, ShieldCheck, Ticket, ArrowLeft } from "lucide-react";
+import { Minus, Plus, ShieldCheck, Ticket, ArrowLeft, ChevronDown } from "lucide-react";
 
 export const Route = createFileRoute("/rifas/$id")({
   loader: ({ params }) => {
