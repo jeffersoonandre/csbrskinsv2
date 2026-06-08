@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SuporteRouteImport } from './routes/suporte'
+import { Route as CotasRouteImport } from './routes/cotas'
 import { Route as ComunidadeRouteImport } from './routes/comunidade'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as RifasIndexRouteImport } from './routes/rifas.index'
@@ -18,6 +19,11 @@ import { Route as RifasIdRouteImport } from './routes/rifas.$id'
 const SuporteRoute = SuporteRouteImport.update({
   id: '/suporte',
   path: '/suporte',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CotasRoute = CotasRouteImport.update({
+  id: '/cotas',
+  path: '/cotas',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ComunidadeRoute = ComunidadeRouteImport.update({
@@ -44,6 +50,7 @@ const RifasIdRoute = RifasIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/comunidade': typeof ComunidadeRoute
+  '/cotas': typeof CotasRoute
   '/suporte': typeof SuporteRoute
   '/rifas/$id': typeof RifasIdRoute
   '/rifas/': typeof RifasIndexRoute
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/comunidade': typeof ComunidadeRoute
+  '/cotas': typeof CotasRoute
   '/suporte': typeof SuporteRoute
   '/rifas/$id': typeof RifasIdRoute
   '/rifas': typeof RifasIndexRoute
@@ -59,21 +67,36 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/comunidade': typeof ComunidadeRoute
+  '/cotas': typeof CotasRoute
   '/suporte': typeof SuporteRoute
   '/rifas/$id': typeof RifasIdRoute
   '/rifas/': typeof RifasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/comunidade' | '/suporte' | '/rifas/$id' | '/rifas/'
+  fullPaths:
+    | '/'
+    | '/comunidade'
+    | '/cotas'
+    | '/suporte'
+    | '/rifas/$id'
+    | '/rifas/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/comunidade' | '/suporte' | '/rifas/$id' | '/rifas'
-  id: '__root__' | '/' | '/comunidade' | '/suporte' | '/rifas/$id' | '/rifas/'
+  to: '/' | '/comunidade' | '/cotas' | '/suporte' | '/rifas/$id' | '/rifas'
+  id:
+    | '__root__'
+    | '/'
+    | '/comunidade'
+    | '/cotas'
+    | '/suporte'
+    | '/rifas/$id'
+    | '/rifas/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ComunidadeRoute: typeof ComunidadeRoute
+  CotasRoute: typeof CotasRoute
   SuporteRoute: typeof SuporteRoute
   RifasIdRoute: typeof RifasIdRoute
   RifasIndexRoute: typeof RifasIndexRoute
@@ -86,6 +109,13 @@ declare module '@tanstack/react-router' {
       path: '/suporte'
       fullPath: '/suporte'
       preLoaderRoute: typeof SuporteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cotas': {
+      id: '/cotas'
+      path: '/cotas'
+      fullPath: '/cotas'
+      preLoaderRoute: typeof CotasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/comunidade': {
@@ -122,6 +152,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ComunidadeRoute: ComunidadeRoute,
+  CotasRoute: CotasRoute,
   SuporteRoute: SuporteRoute,
   RifasIdRoute: RifasIdRoute,
   RifasIndexRoute: RifasIndexRoute,
@@ -129,3 +160,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

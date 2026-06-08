@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
-import { RaffleCard } from "@/components/RaffleCard";
+import { RaffleListItem } from "@/components/RaffleListItem";
 import { raffles } from "@/lib/raffles";
 
 export const Route = createFileRoute("/rifas/")({
@@ -19,9 +19,9 @@ function RifasPage() {
       <h1 className="mb-1 font-display text-2xl font-bold uppercase">Rifas</h1>
       <p className="mb-5 text-sm text-muted-foreground">Todas as rifas, ativas e encerradas.</p>
 
-      <div className="grid grid-cols-1 gap-4">
+      <div className="flex flex-col gap-2">
         {raffles.map((r) => (
-          <RaffleCard key={r.id} raffle={r} />
+          <RaffleListItem key={r.id} raffle={r} />
         ))}
       </div>
     </Layout>

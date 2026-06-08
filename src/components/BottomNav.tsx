@@ -3,7 +3,7 @@ import { Home, Ticket, MessageCircle, HeadphonesIcon } from "lucide-react";
 
 const items = [
   { to: "/", label: "Início", icon: Home },
-  { to: "/rifas", label: "Rifas", icon: Ticket },
+  { to: "/cotas", label: "Cotas", icon: Ticket },
   { to: "/comunidade", label: "Grupo", icon: MessageCircle },
   { to: "/suporte", label: "Suporte", icon: HeadphonesIcon },
 ] as const;
