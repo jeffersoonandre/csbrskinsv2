@@ -42,6 +42,7 @@ const quickPicks = [
 function RafflePage() {
   const { raffle } = Route.useLoaderData();
   const [qty, setQty] = useState(1);
+  const [descOpen, setDescOpen] = useState(true);
   const pct = Math.round((raffle.soldNumbers / raffle.totalNumbers) * 100);
   const total = (qty * raffle.price).toFixed(2).replace(".", ",");
 
