@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import type { Raffle } from "@/lib/raffles";
-import { Check } from "lucide-react";
+import { Check, Trophy } from "lucide-react";
 
 export function RaffleListItem({ raffle }: { raffle: Raffle }) {
   return (
