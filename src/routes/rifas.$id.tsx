@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useState } from "react";
 import { Layout } from "@/components/Layout";
 import { getRaffleById } from "@/lib/raffles";
-import { Minus, Plus, ShieldCheck, Ticket, ArrowLeft } from "lucide-react";
+import { Minus, Plus, ShieldCheck, Ticket, ArrowLeft, ChevronDown } from "lucide-react";
 
 export const Route = createFileRoute("/rifas/$id")({
   loader: ({ params }) => {
@@ -42,6 +42,7 @@ const quickPicks = [
 function RafflePage() {
   const { raffle } = Route.useLoaderData();
   const [qty, setQty] = useState(1);
+  const [descOpen, setDescOpen] = useState(true);
   const pct = Math.round((raffle.soldNumbers / raffle.totalNumbers) * 100);
   const total = (qty * raffle.price).toFixed(2).replace(".", ",");
 
@@ -117,17 +118,8 @@ function RafflePage() {
         </div>
       </div>
 
-      {/* Description */}
-      <div className="mt-4 rounded-2xl border border-border bg-card p-4">
-        <div className="flex items-center gap-2">
-          <ShieldCheck className="h-4 w-4 text-primary" />
-          <h3 className="font-display text-sm font-bold uppercase tracking-wider">Descrição / Regulamento</h3>
-        </div>
-        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{raffle.description}</p>
-      </div>
-
-      {/* Sticky CTA */}
-      <div className="sticky bottom-16 mt-6 rounded-2xl border border-primary/40 bg-card/95 p-4 shadow-[var(--shadow-glow)] backdrop-blur-xl">
+      {/* CTA */}
+      <div className="mt-6 rounded-2xl border border-primary/40 bg-card p-4 shadow-[var(--shadow-glow)]">
         <div className="mb-3 flex items-center justify-between">
           <div>
             <div className="text-[10px] uppercase tracking-widest text-muted-foreground">{qty} cota{qty > 1 ? "s" : ""} selecionada{qty > 1 ? "s" : ""}</div>
@@ -138,6 +130,24 @@ function RafflePage() {
         <button className="w-full rounded-xl bg-primary py-3.5 font-display text-sm font-bold uppercase tracking-widest text-primary-foreground transition-transform active:scale-95">
           Quero Participar
         </button>
+      </div>
+
+      {/* Description */}
+      <div className="mt-4 rounded-2xl border border-border bg-card p-4">
+        <button
+          type="button"
+          onClick={() => setDescOpen((v) => !v)}
+          className="flex w-full items-center justify-between gap-2"
+        >
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="h-4 w-4 text-primary" />
+            <h3 className="font-display text-sm font-bold uppercase tracking-wider">Descrição / Regulamento</h3>
+          </div>
+          <ChevronDown className={`h-4 w-4 text-muted-foreground transition-transform ${descOpen ? "rotate-180" : ""}`} />
+        </button>
+        {descOpen && (
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{raffle.description}</p>
+        )}
       </div>
     </Layout>
   );
