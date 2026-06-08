@@ -56,6 +56,7 @@ export const raffles: Raffle[] = [
     status: "encerrada",
     description: "Rifa encerrada.",
     winner: "Gabrielle Baldo",
+    winningNumber: 17,
   },
   {
     id: "e001",
@@ -68,6 +69,7 @@ export const raffles: Raffle[] = [
     status: "encerrada",
     description: "Rifa encerrada.",
     winner: "Jefferson André",
+    winningNumber: 88,
   },
 ];
 
