@@ -171,6 +171,6 @@ function RaffleActive({ raffle, qty, setQty, descOpen, setDescOpen, pct, total }
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{raffle.description}</p>
         )}
       </div>
-    </Layout>
+    </>
   );
 }
