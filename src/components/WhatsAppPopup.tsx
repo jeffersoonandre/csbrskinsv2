@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { MessageCircle, X } from "lucide-react";
+import { X } from "lucide-react";
+import whatsappIcon from "@/assets/whatsapp.svg.asset.json";
 
 export function WhatsAppPopup() {
   const [open, setOpen] = useState(false);
@@ -41,11 +42,11 @@ export function WhatsAppPopup() {
 
         <div className="flex items-center gap-3 p-4 pr-10">
           <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#25D366]/20 text-[#25D366]">
-            <MessageCircle className="h-5 w-5" />
+            <img src={whatsappIcon.url} alt="WhatsApp" className="h-6 w-6" style={{ filter: "invert(58%) sepia(86%) saturate(401%) hue-rotate(86deg) brightness(95%) contrast(89%)" }} />
           </div>
           <div className="flex-1">
             <div className="font-display text-sm font-bold leading-tight text-foreground">
-              Entre na nossa comunidade
+              Entre em nosso grupo
             </div>
             <div className="text-[12px] text-muted-foreground">
               Receba avisos de novas rifas em primeira mão.
