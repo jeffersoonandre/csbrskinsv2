@@ -1,9 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
 import { RaffleCard } from "@/components/RaffleCard";
-import { raffles, type RaffleStatus } from "@/lib/raffles";
-import { Zap, Shield, Trophy, MessageCircle, ArrowRight } from "lucide-react";
+import { RaffleListItem } from "@/components/RaffleListItem";
+import { WhatsAppPopup } from "@/components/WhatsAppPopup";
+import { raffles } from "@/lib/raffles";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -17,83 +17,35 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const filters: { value: "todas" | RaffleStatus; label: string }[] = [
-  { value: "todas", label: "Todas" },
-  { value: "ativa", label: "Ativas" },
-  { value: "encerrada", label: "Encerradas" },
-];
-
 function Index() {
-  const [filter, setFilter] = useState<"todas" | RaffleStatus>("todas");
-  const list = filter === "todas" ? raffles : raffles.filter((r) => r.status === filter);
+  const ativas = raffles.filter((r) => r.status === "ativa");
+  const encerradas = raffles.filter((r) => r.status === "encerrada").slice(0, 3);
 
   return (
     <Layout>
-
-      {/* Stats */}
-      <section className="mb-6 grid grid-cols-3 gap-2">
-        {[
-          { icon: Trophy, label: "Preços", value: "Acessíveis" },
-          { icon: Shield, label: "100%", value: "Seguro" },
-          { icon: Zap, label: "Sorteios", value: "Diários" },
-        ].map((s) => (
-          <div key={s.label} className="rounded-xl border border-border bg-card p-3 text-center">
-            <s.icon className="mx-auto mb-1.5 h-4 w-4 text-primary" />
-            <div className="font-display text-xs font-bold text-primary">{s.label}</div>
-            <div className="text-[10px] uppercase tracking-wider text-muted-foreground">{s.value}</div>
-          </div>
-        ))}
-      </section>
-
-      {/* Filters */}
-      <section className="mb-4">
-        <h2 className="mb-3 font-display text-lg font-bold uppercase tracking-wide">Rifas</h2>
-        <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {filters.map((f) => (
-            <button
-              key={f.value}
-              onClick={() => setFilter(f.value)}
-              className={`shrink-0 rounded-full border px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition-all ${
-                filter === f.value
-                  ? "border-primary bg-primary text-primary-foreground"
-                  : "border-border bg-card text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {f.label}
-            </button>
+      <section className="mb-6">
+        <h2 className="mb-3 font-display text-lg font-bold uppercase tracking-wide">Rifa Ativa</h2>
+        <div className="grid grid-cols-1 gap-4">
+          {ativas.map((r) => (
+            <RaffleCard key={r.id} raffle={r} />
           ))}
         </div>
       </section>
 
-      {/* List */}
-      <section className="grid grid-cols-1 gap-4">
-        {list.map((r) => (
-          <RaffleCard key={r.id} raffle={r} />
-        ))}
-        {list.length === 0 && (
-          <div className="rounded-xl border border-dashed border-border p-10 text-center text-sm text-muted-foreground">
-            Nenhuma rifa encontrada.
+      {encerradas.length > 0 && (
+        <section className="mb-6">
+          <h2 className="mb-3 font-display text-lg font-bold uppercase tracking-wide">
+            Rifas Encerradas
+          </h2>
+          <div className="flex flex-col gap-2">
+            {encerradas.map((r) => (
+              <RaffleListItem key={r.id} raffle={r} />
+            ))}
           </div>
-        )}
-      </section>
+        </section>
+      )}
 
-      {/* WhatsApp CTA */}
-      <a
-        href="https://chat.whatsapp.com/Ez7Mnzjh3GsHqJpU07nnDI"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-6 flex items-center gap-3 rounded-2xl border border-success/40 bg-success/10 p-4 transition-all hover:border-success/70"
-      >
-        <div className="grid h-11 w-11 place-items-center rounded-xl bg-success/20 text-success">
-          <MessageCircle className="h-5 w-5" />
-        </div>
-        <div className="flex-1">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-success">Comunidade</div>
-          <div className="font-display text-sm font-bold">Entre no grupo do WhatsApp</div>
-          <div className="text-[11px] text-muted-foreground">Avisos de sorteios em primeira mão · Grátis</div>
-        </div>
-        <ArrowRight className="h-4 w-4 text-success" />
-      </a>
+      <WhatsAppPopup />
     </Layout>
   );
 }
