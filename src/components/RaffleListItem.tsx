@@ -23,8 +23,9 @@ export function RaffleListItem({ raffle }: { raffle: Raffle }) {
         </div>
         <div className="truncate font-display text-sm font-bold leading-tight">{raffle.title}</div>
         {raffle.winner && (
-          <div className="text-[10px] text-muted-foreground">
-            Ganhador: <span className="text-foreground">{raffle.winner}</span>
+          <div className="flex items-center gap-1 text-[10px] text-muted-foreground">
+            <Trophy className="h-3 w-3 text-yellow-500" />
+            Vencedor: <span className="text-foreground">{raffle.winner}</span>
           </div>
         )}
       </div>
