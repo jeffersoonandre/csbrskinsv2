@@ -4,7 +4,8 @@ import { RaffleCard } from "@/components/RaffleCard";
 import { RaffleListItem } from "@/components/RaffleListItem";
 import { WhatsAppPopup } from "@/components/WhatsAppPopup";
 import { raffles } from "@/lib/raffles";
-import { MessageCircle, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import whatsappIcon from "@/assets/whatsapp.svg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -50,18 +51,23 @@ function Index() {
             rel="noopener noreferrer"
             className="mt-4 flex items-center gap-3 rounded-2xl border border-[#25D366]/40 bg-[#25D366]/15 p-3 transition-all hover:bg-[#25D366]/25 hover:border-[#25D366]/60"
           >
-            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#25D366]/30 text-[#25D366]">
-              <MessageCircle className="h-5 w-5" />
+            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#25D366]/30">
+              <img
+                src={whatsappIcon.url}
+                alt="WhatsApp"
+                className="h-5 w-5"
+                style={{ filter: "invert(58%) sepia(86%) saturate(401%) hue-rotate(86deg) brightness(95%) contrast(89%)" }}
+              />
             </div>
             <div className="min-w-0 flex-1">
               <div className="text-[10px] font-bold uppercase tracking-widest text-[#25D366]">
-                Comunidade
+                Grupo
               </div>
               <div className="font-display text-sm font-bold leading-tight">
                 Entre no grupo do WhatsApp
               </div>
               <div className="text-[11px] text-muted-foreground">
-                Avisos de sorteios em primeira mão · Grátis
+                Avisos de sorteios em primeira mão
               </div>
             </div>
             <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground" />
