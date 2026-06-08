@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useState } from "react";
 import { Layout } from "@/components/Layout";
 import { getRaffleById } from "@/lib/raffles";
-import { Minus, Plus, ShieldCheck, Ticket, ArrowLeft, ChevronDown } from "lucide-react";
+import { Minus, Plus, ShieldCheck, Ticket, ArrowLeft, ChevronDown, Trophy } from "lucide-react";
 
 export const Route = createFileRoute("/rifas/$id")({
   loader: ({ params }) => {
@@ -54,8 +54,8 @@ function RafflePage() {
 
       <div className="relative aspect-square overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]">
         <img src={raffle.image} alt={raffle.title} className="h-full w-full object-cover" />
-        <div className="absolute left-3 top-3 rounded-full border border-success/40 bg-success/20 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-success backdrop-blur-md">
-          Ativo
+        <div className={`absolute left-3 top-3 rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-widest backdrop-blur-md ${raffle.status === "encerrada" ? "border-border bg-muted/60 text-muted-foreground" : "border-success/40 bg-success/20 text-success"}`}>
+          {raffle.status === "encerrada" ? "Encerrada" : "Ativo"}
         </div>
       </div>
 
@@ -64,6 +64,28 @@ function RafflePage() {
         <h1 className="mt-1 font-display text-2xl font-bold leading-tight">{raffle.title}</h1>
       </div>
 
+      {raffle.status === "encerrada" ? (
+        <div className="mt-4 rounded-2xl border border-primary/40 bg-card p-6 shadow-[var(--shadow-glow)]">
+          <div className="flex flex-col items-center text-center">
+            <Trophy className="h-10 w-10 text-yellow-500" />
+            <div className="mt-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Cota Vencedora</div>
+            <div className="mt-1 font-display text-4xl font-bold text-primary tabular-nums">
+              {raffle.winningNumber !== undefined ? String(raffle.winningNumber).padStart(2, "0") : "—"}
+            </div>
+            <div className="mt-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Vencedor</div>
+            <div className="mt-1 font-display text-xl font-bold">{raffle.winner ?? "—"}</div>
+          </div>
+        </div>
+      ) : (
+        <RaffleActive raffle={raffle} qty={qty} setQty={setQty} descOpen={descOpen} setDescOpen={setDescOpen} pct={pct} total={total} />
+      )}
+    </Layout>
+  );
+}
+
+function RaffleActive({ raffle, qty, setQty, descOpen, setDescOpen, pct, total }: any) {
+  return (
+    <>
       {/* Progress */}
       <div className="mt-4 rounded-2xl border border-border bg-card p-4">
         <div className="mb-2 flex items-center justify-between">
