@@ -27,7 +27,7 @@ export const raffles: Raffle[] = [
     image: caparifaAsset.url,
     price: 3,
     totalNumbers: 100,
-    soldNumbers: 57,
+    soldNumbers: 72,
     status: "ativa",
     description:
       "Concorra à exclusiva StatTrak™ M4A1-S | Black Lotus. Skin rara do Counter-Strike 2, entregue diretamente na sua conta Steam após o sorteio.",
